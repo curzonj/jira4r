@@ -1,7 +1,4 @@
-# Jira for Ruby
-
-## Prerequisites 
-SVN HEAD version of SOAP4R [http://dev.ctor.org/soap4r](http://dev.ctor.org/soap4r) is required.
+# A Ruby SOAP binding for JIRA
 
 ## Build
     gem build jira4r.gemspec
@@ -14,7 +11,7 @@ SVN HEAD version of SOAP4R [http://dev.ctor.org/soap4r](http://dev.ctor.org/soap
 ## Quick start
 
 ### Authorization:
-	jira = Jira4R::JiraTool.new(2, "http://example.com/jira/")
+    jira = Jira4R::JiraTool.new(2, "http://example.com/jira/")
     jira.login("robot", "robot")
 
 ### Creating issue:
@@ -31,12 +28,12 @@ SVN HEAD version of SOAP4R [http://dev.ctor.org/soap4r](http://dev.ctor.org/soap
     issue.project = "AAA"
     issue.type = "1"
 	
-	component = Jira4R::V2::RemoteComponent.new(10000)
+    component = Jira4R::V2::RemoteComponent.new(10000)
 
-	componentlist = Jira4R::V2::ArrayOf_tns1_RemoteComponent.new 
-	componentlist.push(component) 
-
-	issue.components = componentlist	
+    componentlist = Jira4R::V2::ArrayOf_tns1_RemoteComponent.new 
+    componentlist.push(component) 
+    
+    issue.components = componentlist	
     issue.summary = "Some text"
     issue.assignee = "robot" # Login
     jira.createIssue(issue)
@@ -47,11 +44,11 @@ To add special objects to issue like components or you have to create an instanc
 
     issue.assignee = ""
 
-Bear in mind that in your JIRA setting you must allow creating unassigned issues.
+Bear in mind that in your JIRA settings you must allow creating unassigned issues.
 
 ## Other functionality
 
-All Jira's SOAP APIs are exposed via Jira4R. In addtion, Jira4R exposes these methods:
+All JIRA's SOAP APIs are exposed via Jira4R. In addition, Jira4R exposes these methods:
 
 * getProjectNoScheme( projectKey )
 * getProject( projectKey )
@@ -65,7 +62,3 @@ All Jira's SOAP APIs are exposed via Jira4R. In addtion, Jira4R exposes these me
 * findPermission( allowedPermissions, permissionName )
 * fineEntityInPermissionMapping( permissionMapping, entityName )
 * setPermissions( permissionScheme, allowedPermissions, entity ) 
-
-## Some examples
-
-[Code examples](http://svn.rubyhaus.org/jira4r/trunk/examples/)
